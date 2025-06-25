@@ -17,7 +17,7 @@ export default function Home() {
         {isSidebarOpen && (
           <motion.div
             key="sidebar"
-            className="fixed top-2 bottom-2 left-2 rounded bg-[#191919] w-[250px] border border-white/10"
+            className="fixed top-0 bottom-0 left-0 bg-[#191919] w-[250px] border-r border-white/10"
             initial={{ opacity: 0, x: -266 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -266 }}
@@ -36,10 +36,12 @@ export default function Home() {
         )}
       </AnimatePresence>
       <motion.div
-        className="fixed top-2 left-[266px] right-[266px] h-[52px] rounded bg-[#191919] px-4 flex items-center justify-between border border-white/10"
+        key="toolbar-no-gaps"
+        className="fixed top-0 h-[52px] bg-[#191919] px-6 flex items-center justify-between border-b border-white/10"
+        initial={{ left: "250px", right: "250px" }}
         animate={{
-          left: isSidebarOpen ? "266px" : "8px",
-          right: isAikaOpen ? "266px" : "8px",
+          left: isSidebarOpen ? "250px" : "0px",
+          right: isAikaOpen ? "250px" : "0px",
         }}
         transition={{ duration, ease: "easeInOut" }}
       >
@@ -75,10 +77,10 @@ export default function Home() {
         </div>
       </motion.div>
       <motion.div
-        initial={{ paddingLeft: "282px", paddingRight: "282px" }}
+        initial={{ paddingLeft: "274px", paddingRight: "274px" }}
         animate={{
-          paddingLeft: isSidebarOpen ? "282px" : "24px",
-          paddingRight: isAikaOpen ? "282px" : "24px",
+          paddingLeft: isSidebarOpen ? "274px" : "24px",
+          paddingRight: isAikaOpen ? "274px" : "24px",
         }}
         transition={{ duration, ease: "easeInOut" }}
         className={"pt-[80px] w-full"}
@@ -89,7 +91,7 @@ export default function Home() {
         {isAikaOpen && (
           <motion.div
             key="aika"
-            className="fixed top-2 bottom-2 right-2 rounded bg-[#191919] w-[250px] border border-white/10"
+            className="fixed top-0 bottom-0 right-0 bg-[#191919] w-[250px] border-l border-white/10"
             initial={{ opacity: 0, x: 266 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 266 }}

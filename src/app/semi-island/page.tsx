@@ -4,7 +4,7 @@ import { useState } from "react";
 import { PanelLeft, PanelRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Logo } from "../../components/logo";
-import Link from "next/link";
+import { Links } from "../../components/links";
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -37,6 +37,7 @@ export default function Home() {
       </AnimatePresence>
       <motion.div
         className="fixed top-2 left-[266px] right-[266px] h-[52px] rounded bg-[#191919] px-4 flex items-center justify-between border border-white/10"
+        initial={{ left: "258px", right: "258px" }}
         animate={{
           left: isSidebarOpen ? "258px" : "8px",
           right: isAikaOpen ? "258px" : "8px",
@@ -83,12 +84,7 @@ export default function Home() {
         transition={{ duration, ease: "easeInOut" }}
         className={"pt-[80px] w-full"}
       >
-        <Link href="/island" className="block">
-          Version 1 - Island
-        </Link>
-        <Link href="/full" className="block">
-          Version 2 - Full
-        </Link>
+        <Links />
       </motion.div>
       <AnimatePresence initial={false}>
         {isAikaOpen && (
@@ -100,7 +96,7 @@ export default function Home() {
             exit={{ opacity: 0, x: 266 }}
             transition={{ duration, ease: "easeInOut" }}
           >
-            <div className="flex justify-start h-[52px] items-center px-4">
+            <div className="flex justify-start h-[52px] items-center px-4 mt-2">
               <div
                 className="flex items-center justify-center w-4 h-4 cursor-pointer"
                 onClick={() => setIsAikaOpen(!isAikaOpen)}
