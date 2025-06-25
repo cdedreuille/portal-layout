@@ -5,6 +5,7 @@ import { PanelLeft, PanelRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Logo } from "../../components/logo";
 import { Links } from "../../components/links";
+import { Cards } from "../../components/cards";
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -36,7 +37,7 @@ export default function Home() {
         )}
       </AnimatePresence>
       <motion.div
-        className="fixed top-2 left-[266px] right-[266px] h-[52px] rounded bg-[#191919] px-4 flex items-center justify-between border border-white/10"
+        className="fixed top-2 h-[52px] rounded bg-[#191919] px-4 flex items-center justify-between border border-white/10"
         initial={{ left: "258px", right: "258px" }}
         animate={{
           left: isSidebarOpen ? "258px" : "8px",
@@ -44,7 +45,7 @@ export default function Home() {
         }}
         transition={{ duration, ease: "easeInOut" }}
       >
-        <div>
+        <div className="flex items-center gap-3">
           <AnimatePresence>
             {!isSidebarOpen && (
               <motion.div
@@ -58,6 +59,7 @@ export default function Home() {
               </motion.div>
             )}
           </AnimatePresence>
+          Home
         </div>
         <div>
           <AnimatePresence>
@@ -85,6 +87,7 @@ export default function Home() {
         className={"pt-[80px] w-full"}
       >
         <Links />
+        <Cards />
       </motion.div>
       <AnimatePresence initial={false}>
         {isAikaOpen && (

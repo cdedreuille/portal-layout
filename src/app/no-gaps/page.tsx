@@ -5,6 +5,7 @@ import { PanelLeft, PanelRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Logo } from "../../components/logo";
 import { Links } from "../../components/links";
+import { Cards } from "../../components/cards";
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -45,7 +46,7 @@ export default function Home() {
         }}
         transition={{ duration, ease: "easeInOut" }}
       >
-        <div>
+        <div className="flex items-center gap-3">
           <AnimatePresence>
             {!isSidebarOpen && (
               <motion.div
@@ -59,6 +60,7 @@ export default function Home() {
               </motion.div>
             )}
           </AnimatePresence>
+          Home
         </div>
         <div>
           <AnimatePresence>
@@ -83,9 +85,10 @@ export default function Home() {
           paddingRight: isAikaOpen ? "274px" : "24px",
         }}
         transition={{ duration, ease: "easeInOut" }}
-        className={"pt-[80px] w-full"}
+        className={"pt-[72px] w-full"}
       >
         <Links />
+        <Cards />
       </motion.div>
       <AnimatePresence initial={false}>
         {isAikaOpen && (
