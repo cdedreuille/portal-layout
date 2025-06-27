@@ -4,7 +4,6 @@ import { useState } from "react";
 import { PanelRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Logo } from "../../components/logo";
-import { Cards } from "../../components/cards";
 import { Header } from "../../components/header";
 import { Content } from "../../components/content";
 
