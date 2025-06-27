@@ -1,6 +1,6 @@
 "use client";
 
-import { PanelLeft, PanelRight, ChevronRight } from "lucide-react";
+import { EllipsisVertical, PanelRight, ChevronRight, Star } from "lucide-react";
 import {
   motion,
   AnimatePresence,
@@ -23,6 +23,7 @@ interface HeaderProps {
   isAikaOpen: boolean;
   setIsAikaOpen: (isAikaOpen: boolean) => void;
   tabs?: Tab[];
+  duration?: number;
 }
 
 export const Header = ({
@@ -31,6 +32,7 @@ export const Header = ({
   isAikaOpen,
   setIsAikaOpen,
   tabs,
+  duration,
 }: HeaderProps) => {
   const hasTabs = tabs && tabs.length > 0;
   const [activeTab, setActiveTab] = useState<string | null>(
@@ -50,24 +52,27 @@ export const Header = ({
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 h-4 bg-black z-10"></div>
+      <div className="fixed top-0 left-0 right-0 h-4 bg-black z-10" />
       <div
         className={clsx(
           "sticky top-2 h-[52px] rounded bg-[#191919] px-4 flex items-center justify-between border border-white/10 z-10",
           hasTabs && "mb-2"
         )}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center">
           <AnimatePresence>
             {!isSidebarOpen && (
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="flex items-center justify-center w-4 h-4 cursor-pointer"
+                initial={{ opacity: 0, width: 0, marginRight: 0 }}
+                animate={{ opacity: 1, width: "auto", marginRight: 20 }}
+                exit={{ opacity: 0, width: 0, marginRight: 0 }}
+                transition={{ duration }}
+                className="flex items-center justify-center w-4 h-4 cursor-pointer overflow-hidden"
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
               >
-                <PanelRight size={16} />
+                <div className="flex items-center justify-center w-4 h-4 text-neutral-400 hover:text-white transition-colors duration-300">
+                  <PanelRight size={16} width={16} height={16} />
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -87,17 +92,28 @@ export const Header = ({
             </motion.div>
           </div>
         </div>
-        <div>
+        <div className="flex items-center">
+          <Star
+            size={16}
+            className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer"
+          />
+          <EllipsisVertical
+            size={16}
+            className="text-neutral-400 ml-4 hover:text-white transition-colors duration-300 cursor-pointer"
+          />
           <AnimatePresence>
             {!isAikaOpen && (
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="flex items-center justify-center w-4 h-4 cursor-pointer"
+                initial={{ opacity: 0, width: 0, marginLeft: 0 }}
+                animate={{ opacity: 1, width: "auto", marginLeft: 16 }}
+                exit={{ opacity: 0, width: 0, marginLeft: 0 }}
+                transition={{ duration }}
+                className="flex items-center justify-center w-4 h-4 cursor-pointer overflow-hidden"
                 onClick={() => setIsAikaOpen(!isAikaOpen)}
               >
-                <PanelLeft size={16} />
+                <div className="flex items-center justify-center w-4 h-4 text-neutral-400 hover:text-white transition-colors duration-300">
+                  <PanelRight size={16} width={16} height={16} />
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
