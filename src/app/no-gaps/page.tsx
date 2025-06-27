@@ -33,6 +33,9 @@ export default function Home() {
                 <PanelRight size={16} />
               </div>
             </div>
+            <div className="pl-4 pt-8">
+              <Links />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -87,7 +90,6 @@ export default function Home() {
         transition={{ duration, ease: "easeInOut" }}
         className={"pt-[72px] w-full"}
       >
-        <Links />
         <Cards />
       </motion.div>
       <AnimatePresence initial={false}>

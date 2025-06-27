@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Logo } from "../../components/logo";
 import { Links } from "../../components/links";
 import { Cards } from "../../components/cards";
+import { Header } from "../../components/header";
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -13,7 +14,7 @@ export default function Home() {
   const duration = 0.3;
 
   return (
-    <div className="flex">
+    <div>
       <AnimatePresence initial={false}>
         {isSidebarOpen && (
           <motion.div
@@ -33,62 +34,37 @@ export default function Home() {
                 <PanelRight size={16} />
               </div>
             </div>
-            <div className="pl-4 pt-8">
-              <Links />
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
       <motion.div
-        className="fixed top-2 left-[266px] right-[266px] h-[52px] rounded bg-[#191919] px-4 flex items-center justify-between border border-white/10"
+        initial={{ paddingLeft: "266px", paddingRight: "266px" }}
         animate={{
-          left: isSidebarOpen ? "266px" : "8px",
-          right: isAikaOpen ? "266px" : "8px",
+          paddingLeft: isSidebarOpen ? "266px" : "24px",
+          paddingRight: isAikaOpen ? "266px" : "24px",
         }}
         transition={{ duration, ease: "easeInOut" }}
+        className={"pt-2 w-full"}
       >
-        <div className="flex items-center gap-3">
-          <AnimatePresence>
-            {!isSidebarOpen && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="flex items-center justify-center w-4 h-4 cursor-pointer"
-                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              >
-                <PanelRight size={16} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-          Home
+        <Header
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+          isAikaOpen={isAikaOpen}
+          setIsAikaOpen={setIsAikaOpen}
+          tabs={[
+            { name: "Home", href: "/" },
+            { name: "About", href: "/about" },
+            { name: "Contact", href: "/contact" },
+          ]}
+        />
+        <div className="px-4 pb-8">
+          <div className="text-2xl mt-8 mb-1">Plugin title</div>
+          <div className="text-md text-neutral-500 mb-8">
+            Lorem ipsum dolor sit amet consectetur. Mauris lacus dapibus orci
+            sit risus massa sed.
+          </div>
+          <Cards number={20} />
         </div>
-        <div>
-          <AnimatePresence>
-            {!isAikaOpen && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="flex items-center justify-center w-4 h-4 cursor-pointer"
-                onClick={() => setIsAikaOpen(!isAikaOpen)}
-              >
-                <PanelLeft size={16} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </motion.div>
-      <motion.div
-        initial={{ paddingLeft: "282px", paddingRight: "282px" }}
-        animate={{
-          paddingLeft: isSidebarOpen ? "282px" : "24px",
-          paddingRight: isAikaOpen ? "282px" : "24px",
-        }}
-        transition={{ duration, ease: "easeInOut" }}
-        className={"pt-[80px] w-full"}
-      >
-        <Cards />
       </motion.div>
       <AnimatePresence initial={false}>
         {isAikaOpen && (
