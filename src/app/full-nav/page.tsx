@@ -18,7 +18,7 @@ export default function Home() {
         {isSidebarOpen && (
           <motion.div
             key="sidebar"
-            className="fixed top-2 bottom-2 left-2 rounded bg-[#191919] w-[250px] border border-white/10"
+            className="fixed top-2 bottom-2 left-2 rounded bg-[#191919] w-[250px] border border-white/10 z-20"
             initial={{ opacity: 0, x: -266 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -266 }}
@@ -51,9 +51,11 @@ export default function Home() {
           isAikaOpen={isAikaOpen}
           setIsAikaOpen={setIsAikaOpen}
           tabs={[
-            { name: "Home", href: "/" },
-            { name: "About", href: "/about" },
-            { name: "Contact", href: "/contact" },
+            { name: "A/B Tests", href: "/" },
+            { name: "Rollouts", href: "/about" },
+            { name: "Flags", href: "/contact" },
+            { name: "Segments", href: "/contact" },
+            { name: "Metrics", href: "/contact" },
           ]}
         />
         <div className="px-4 pb-8">
@@ -69,7 +71,7 @@ export default function Home() {
         {isAikaOpen && (
           <motion.div
             key="aika"
-            className="fixed top-2 bottom-2 right-2 rounded bg-[#191919] w-[250px] border border-white/10"
+            className="fixed top-2 bottom-2 right-2 rounded bg-[#191919] w-[250px] border border-white/10 z-20"
             initial={{ opacity: 0, x: 266 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 266 }}
