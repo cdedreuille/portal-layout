@@ -9,7 +9,7 @@ import { Content } from "../../components/content";
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isAikaOpen, setIsAikaOpen] = useState(true);
+  const [isAikaOpen, setIsAikaOpen] = useState(false);
   const duration = 0.3;
 
   return (
@@ -37,7 +37,7 @@ export default function Home() {
         )}
       </AnimatePresence>
       <motion.div
-        initial={{ paddingLeft: "266px", paddingRight: "266px" }}
+        initial={{ paddingLeft: "266px", paddingRight: "8px" }}
         animate={{
           paddingLeft: isSidebarOpen ? "266px" : "8px",
           paddingRight: isAikaOpen ? "266px" : "8px",
