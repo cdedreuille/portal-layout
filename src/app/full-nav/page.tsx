@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { PanelLeft, PanelRight } from "lucide-react";
+import { PanelRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Logo } from "../../components/logo";
-import { Links } from "../../components/links";
 import { Cards } from "../../components/cards";
 import { Header } from "../../components/header";
 
