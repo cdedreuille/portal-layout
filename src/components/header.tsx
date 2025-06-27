@@ -110,7 +110,7 @@ export const Header = ({
             className={clsx(
               "hover:bg-neutral-800 px-3 py-1 rounded text-neutral-400 text-sm relative cursor-pointer",
               activeTab === tab.name &&
-                "before:content-[''] before:absolute before:-bottom-[5px] before:left-2 before:right-2 before:h-[1px] before:bg-white"
+                "before:content-[''] before:absolute before:-bottom-[5px] before:left-2 before:right-2 before:h-[1px] before:bg-white text-white"
             )}
             onClick={() => setActiveTab(tab.name)}
           >
